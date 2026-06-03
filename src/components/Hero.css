@@ -1,0 +1,119 @@
+.hero {
+  position: relative;
+  padding-top: 120px;
+  padding-bottom: 60px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero__squiggle {
+  position: absolute;
+  left: -20px;
+  top: 60px;
+  width: 80px;
+  height: 280px;
+  pointer-events: none;
+}
+
+.hero__content {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 2rem;
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5.5vw, 4.2rem);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--clr-text);
+  margin-bottom: 1.5rem;
+}
+
+.hero__sub {
+  font-size: 0.95rem;
+  color: var(--clr-muted);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+/* Avatar cluster */
+.hero__avatars {
+  position: relative;
+  height: 220px;
+  margin-top: 3rem;
+}
+.hero__avatar {
+  position: absolute;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  animation: float 4s ease-in-out infinite;
+  transform: translateY(30px);
+  opacity: 0;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  animation-duration: 0.6s;
+}
+@keyframes avatarIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.hero__avatar {
+  animation:
+    avatarIn 0.6s ease forwards,
+    float 5s ease-in-out 1s infinite;
+}
+.hero__avatar-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  opacity: 0.85;
+}
+
+.hero__avatar img.hero__avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+  transform-origin: center;
+  transition:
+    transform 0.6s ease,
+    box-shadow 0.3s ease;
+  will-change: transform;
+}
+.hero__avatar:hover img.hero__avatar-img {
+  transform: scale(1.06) rotate(-2deg);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+/* subtle slow rotation to add advanced motion */
+.hero__avatar {
+  animation:
+    avatarIn 0.6s ease forwards,
+    float 5s ease-in-out 1s infinite,
+    spin-slow 18s linear 2s infinite;
+}
+
+/* Responsive avatar positions */
+@media (max-width: 768px) {
+  .hero__avatars {
+    height: 160px;
+  }
+  .hero__avatar {
+    transform: scale(0.75);
+    transform-origin: top left;
+  }
+}
